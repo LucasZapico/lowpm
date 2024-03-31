@@ -38,3 +38,11 @@ lowpm --template ./templates/template-board.v2.0.md --n project-foo.md
 ### Challenges 
 
 ? should templates dir be flat `templat-board.md` `template-page.md` or nested `board/template-1.md` `page/template.1.md`?
+
+
+
+?should list be csv? I feel like they should but, this requires some different thinking.
+
+### Idea - Feature
+
+It would be nice to some how config the board column, which then populated, status, in page and list
