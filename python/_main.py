@@ -2,13 +2,15 @@ import argparse
 import os
 import sys
 import yaml
-from utils.config import load_config
+from utils.config import load_config, check_and_create_project_dir
 from templates import create_new_board, create_new_list, create_new_page
 
 
 def main():
     # Load the config file
     config = load_config()
+    check_and_create_project_dir()
+    
 
     if not config:
         print("Exiting...")
