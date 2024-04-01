@@ -1,48 +1,43 @@
-## Project 
+# Markdown Todo 
 
-### Features 
+The idea behind this project is to make a low level todo/project manager 
 
-- cli init new (board, list, page) from template 
-- in a board doc, create new-todo.md this creates a new page from template page
+## Core
 
-----
+- init
+- watch or run manually
 
-### Templates 
+### CLI action 
 
-The default template is the first template of a type found in templates. 
+### File system 
 
-If `low-project` is a global package templates are looked for at the global config path. Templates at the project level override templates at the global level. 
+### Template 
 
-#### Specific templates 
+set templates 
 
-Can be defined by; 
+### App 
 
-```sh 
-lowpm --template <path/to/template> <file-name>
-```
+- web
+- electron 
+- mobile 
+  - ios
+  - android
+  
+### Accessible api
 
-```sh 
-lowpm -t <path/to/template> <file-name>
-```
+## Challenges and function 
 
-**Example**
+- how do we handle showing related tasks and dependent tasks
+- how do we handle task and projects that can appear on multiple projects, epics, etc
 
-```sh 
-lowpm --template ./templates/template-board.v2.0.md --name project-foo.md
-```
+## Stories and Use Cases 
 
-```sh 
-lowpm --template ./templates/template-board.v2.0.md --n project-foo.md
-```
-
-### Challenges 
-
-? should templates dir be flat `templat-board.md` `template-page.md` or nested `board/template-1.md` `page/template.1.md`?
+Be able to directly edit files in a human readable format. Edit and add task, projects, epcs from the text editor or file system. 
 
 
+## References 
 
-?should list be csv? I feel like they should but, this requires some different thinking.
-
-### Idea - Feature
-
-It would be nice to some how config the board column, which then populated, status, in page and list
+[zettelcon - backlink](https://github.com/whateverforever/zettelcon)
+[python frontmatter - waylonwalker.com](https://waylonwalker.com/python-frontmatter/)
+[python frontmatter docs](https://python-frontmatter.readthedocs.io/en/latest/)
+[working with frontmatter in python - raymondcamden.com](https://www.raymondcamden.com/2022/01/06/working-with-frontmatter-in-python)
