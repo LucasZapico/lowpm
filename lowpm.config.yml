@@ -1,2 +1,0 @@
-timestamp_format: mm/dd/yyyy # 05/22/2021
-board_columns: ["backlog", "todo", "doing", "done", "archive"]
