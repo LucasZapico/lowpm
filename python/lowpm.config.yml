@@ -1,0 +1,26 @@
+timestamp_format: mm/dd/yyyy # 05/22/2021
+board_columns: ["backlog", "todo", "doing", "done", "archive"]
+##
+## Global Configs
+## 
+# if you use this package globally it will look for configs and templates 
+global_config_path: "~/.lowpm"
+##
+## Project Level Configs
+## These are configs at the project level and will override global configs
+##
+project_config_path: "./lowpm.config.yml"
+dir: '.lowpm'
+##
+## Templates
+##
+frontmatter:
+  base:
+    title: "foo"
+    description: ""
+    date_created: '04/02/2024'
+    last_modified: '2024/03/31'
+  page: 
+    status: "backlog" # backlog, todo, doing, done, archive 
+  list: 
+  board:
