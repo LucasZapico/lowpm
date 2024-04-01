@@ -1,0 +1,16 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#0F3145",
+    "titleBar.activeBackground": "#144461",
+    "titleBar.activeForeground": "#F6FAFD"
+  },
+
+  "python.pythonPath": "/Users/luca/.local/share/virtualenvs/python-i_-eO6dG/bin/python",
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "100"],
+  "[python]": {
+    "editor.formatOnSave": true
+  }
+}
