@@ -4,9 +4,11 @@ import sys
 import yaml
 from utils.config import load_config, check_and_create_project_dir
 from templates import create_new_board, create_new_list, create_new_page
-
+from app import initialize
 
 def main():
+    # preloading and initializing the app
+    initialize()
     # Load the config file
     config = load_config()
     check_and_create_project_dir()
