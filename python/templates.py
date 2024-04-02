@@ -2,6 +2,7 @@ import shutil
 import os
 import yaml
 from utils.config import load_config, project_root
+from collections import OrderedDict
 
 
 def update_frontmatter(frontmatter, key, value):
@@ -22,19 +23,20 @@ def create_new_board(board_config=None):
 
     lowpm_dir = lowpm_config["dir"]
 
-    base_frontmatter = lowpm_config["frontmatter"]["base"]
+    base_frontmatter = OrderedDict(lowpm_config["frontmatter"]["base"])
     board_frontmatter = (
-        lowpm_config["frontmatter"]["board"]
+        OrderedDict(lowpm_config["frontmatter"]["board"])
         if lowpm_config["frontmatter"]["board"]
         else None
     )
 
-    frontmattter = (
-        {**base_frontmatter, **board_frontmatter}
-        if board_frontmatter
-        else base_frontmatter
-    )
+    frontmatter_with_type = update_frontmatter(base_frontmatter, "type", "baord")
 
+    if board_frontmatter:
+        frontmatter_with_type.update(board_frontmatter)
+    
+    frontmatter = frontmatter_with_type
+    
     # Define the path to the template
     template_path = os.path.join(
         project_root, lowpm_dir, "templates", "template.board.md"
@@ -82,18 +84,19 @@ def create_new_page(page_config=None):
     if not isinstance(lowpm_config, dict):
         print("Error: load_config() did not return a dictionary.")
         return
-    base_frontmatter = lowpm_config["frontmatter"]["base"]
+    base_frontmatter = OrderedDict(lowpm_config["frontmatter"]["base"])
     page_frontmatter = (
-        lowpm_config["frontmatter"]["page"]
+        OrderedDict(lowpm_config["frontmatter"]["page"])
         if lowpm_config["frontmatter"]["page"]
         else None
     )
+    frontmatter_with_type = update_frontmatter(base_frontmatter, "type", "page")
 
-    frontmattter = (
-        {**base_frontmatter, **page_frontmatter}
-        if page_frontmatter
-        else base_frontmatter
-    )
+    if page_frontmatter:
+        frontmatter_with_type.update(page_frontmatter)
+    frontmatter = frontmatter_with_type
+
+    print(frontmatter)
 
     lowpm_dir = lowpm_config["dir"]
     project_dir = lowpm_config["project_dir"]
@@ -103,7 +106,7 @@ def create_new_page(page_config=None):
         project_root, lowpm_dir, "templates", "template.page.md"
     )
 
-    frontmatter = update_frontmatter(base_frontmatter, "type", "page")
+  
 
     el_type = page_config["type"]
 
@@ -111,7 +114,7 @@ def create_new_page(page_config=None):
         "template": page_config["template"] or template_path,
         "name": page_config["name"] or "new.md",
         "path": page_config["path"] or project_dir,
-        "frontmatter": frontmatter,
+        "frontmatter": frontmatter
     }
 
     # Load the template
@@ -158,11 +161,12 @@ def create_new_list(list_config=None):
         else None
     )
 
-    frontmatter = (
-        {**base_frontmatter, **list_frontmatter}
-        if list_frontmatter
-        else base_frontmatter
-    )
+    frontmatter_with_type = update_frontmatter(base_frontmatter, "type", "list")
+
+    if list_frontmatter:
+        frontmatter_with_type.update(list_frontmatter)
+
+    frontmatter = frontmatter_with_type
 
     # Define the path to the template
     template_path = os.path.join(
