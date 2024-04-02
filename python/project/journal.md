@@ -78,3 +78,16 @@ This would mean that when we created a page, a parent board would be required.
 
 This would also mean that when we init the app project name would have to be created with a starter board. 
 
+## Watching for changes 
+
+ok starting the watch functionality. Setting up a dir watcher was very easy. Thank you python. Now I need to think about how I want to watch for changes. 
+
+I'm thinking, start with page changes...or board changes...idk.
+
+### Stories 
+
+A user adds a page to a board. The board column should update with the page backlink as a list item and be added to the column that matches status. 
+
+- If status is empty, the board adds a column for empty?
+- Or strict, through and error that status has to match. 
+- default status is required?
