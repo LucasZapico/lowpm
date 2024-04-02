@@ -70,3 +70,11 @@ I think I should do global > board/page/list > custom template and have each ove
 
 Right now it is `template.board.md` `template.pgae.md` `template.list.md`
 
+## floating tasks
+
+Should we allow orphan pages...pages that are not attached to a given board or list? 
+
+This would mean that when we created a page, a parent board would be required. 
+
+This would also mean that when we init the app project name would have to be created with a starter board. 
+
