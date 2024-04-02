@@ -11,6 +11,9 @@ global_config_path: "~/.lowpm"
 ##
 project_config_path: "./lowpm.config.yml"
 dir: '.lowpm'
+# set the root of the project managemnt directory
+# default to the current directory
+project_dir:  'foo-project' # "."
 ##
 ## Templates
 ##
