@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 pyinstaller = "*"
 pyyaml = "*"
+watchdog = "*"
 
 [dev-packages]
 flake8 = "*"
