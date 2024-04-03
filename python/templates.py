@@ -48,7 +48,7 @@ def create_new_board(board_config=None):
 
     brd_config = {
         "template": board_config["template"] or template_path,
-        "name": board_config["name"] or f"new.{el_type}.md",
+        "name": f"{board_config["name"]}.{el_type}.md" or f"new.{el_type}.md",
         "path": board_config["path"] or project_dir,
         "frontmatter": frontmatter,
     }
@@ -112,7 +112,7 @@ def create_new_page(page_config=None):
 
     pg_config = {
         "template": page_config["template"] or template_path,
-        "name": page_config["name"] or "new.md",
+        "name": f"{page_config["name"]}.md" or f"new.md",
         "path": page_config["path"] or project_dir,
         "frontmatter": frontmatter
     }
@@ -177,7 +177,7 @@ def create_new_list(list_config=None):
 
     li_config = {
         "template": list_config["template"] or template_path,
-        "name": list_config["name"] or f"new.{el_type}.md",
+        "name": f"{list_config["name"]}.{el_type}.md" or f"new.{el_type}.md",
         "path": list_config["path"] or project_dir,
         "frontmatter": frontmatter,
     }
