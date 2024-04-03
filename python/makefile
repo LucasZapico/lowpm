@@ -5,3 +5,6 @@ main:
 
 build_bin:
 	pyinstaller --onefile _main.py
+
+dev:
+	pipenv run python3 dev.py
