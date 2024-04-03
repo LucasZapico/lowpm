@@ -91,3 +91,47 @@ A user adds a page to a board. The board column should update with the page back
 - If status is empty, the board adds a column for empty?
 - Or strict, through and error that status has to match. 
 - default status is required?
+
+### naming and uniqueness issues
+
+An issue I can forsee is in regards to uniqueness. 
+
+Suppose, we have a board named foo.board.md, if foo is added to the associated boards array in a page the boar will then have the page added to the defined column. 
+
+Board names should be unique under projects, no spaces, no uppercase. 
+
+?let the user define the naming rules?
+
+### question: Freedom 
+
+I want to allow the users to manually make markdown files in all the ways someone might. But this increases the risk of user error, the type that comes to mind is missing front matter fields. Their are a few ways to handle this. 
+
+- add a watcher checker that lints frontmatter for required fields, "boards", "status", "date_created", "last_modified", "title"
+
+
+#### question: User feild remap custom naming of required fields?
+
+Should we let the user remap the frontmatter fields to their own naming?
+
+## allow ophan pages or not? 
+
+Should all the pages be attached to a board? Then I would want to have a default board in the config as well as be able to pass --board name to the cli new method
+
+
+## Project path 
+
+I want to support both absolute paths and relative path from where the app is initialized
+
+## Gotchas 
+
+The doc title must match the file prefix label,
+
+**example**
+title: foo --> foo.md or foo.board.md or foo.list.md
+
+**Example**
+title: The Lazy Lizard --> the-lazy-lizard.md or the-lazy-lizard.board.md
+
+### Feature: handle whitespace and capitals in doc titles 
+
+or have the title and another properties that matches the file name
