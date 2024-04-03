@@ -7,6 +7,11 @@ name = "pypi"
 pyinstaller = "*"
 pyyaml = "*"
 watchdog = "*"
+python-frontmatter = "*"
+markdown = "*"
+beautifulsoup4 = "*"
+html2text = "*"
+html2markdown = "*"
 
 [dev-packages]
 flake8 = "*"
