@@ -11,12 +11,25 @@ from utils.logger import logger
 from utils.misc import find_file_in_dir
 from utils.config import load_config
 from utils.doc_utils import update_doc, make_doc
+from utils.misc import format_doc_file_name
+from handlers.page import page_change_handler
 
 config = load_config()
 project_dir = os.path.abspath(config["project_dir"])
 board_columns = config["board_columns"]
 
 def handle_change(path):
+    page_frontmatter = get_frontmatter(path)
+    html_content = md_to_html(path)
+
+    doc = {
+        "frontmatter": page_frontmatter,
+        "html": html_content,
+        "path": path,
+        "title": page_frontmatter["title"],
+        "file_name": format_doc_file_name(page_frontmatter["title"])
+    }
+
     if path.endswith(".md"):
         logger.info(f"Markdown file {path} has been modified")
 
@@ -36,19 +49,13 @@ def handle_change(path):
             logger.info(f"The file {path} is a page markdown file")
             # if page has board key check that backlink exist on board in correct column
 
+            page_change_handler(doc)
 
             
 
         
         # print(html_content)
 
-def get_boards_paths(frontmatter):
-    # get board file names from frontmatter            
-    board_file_names = [f"{board}.board.md" for board in frontmatter["boards"]]
-
-    # find board files in project directory
-    board_paths = [find_file_in_dir(project_dir, board_file_name) for board_file_name in board_file_names]
-    return board_paths
 
 # check if markdown frontmatter has "board", and "status" 
 def check_page_frontmatter(frontmatter):
