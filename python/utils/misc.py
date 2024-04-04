@@ -21,3 +21,10 @@ def find_file_in_dir(directory, filename):
         if filename in files:
             return os.path.join(root, filename)
     return None
+
+##
+## formatters 
+## - [set up nextjs project](.md) --> set-up-nextjs-project.md
+
+def format_doc_file_name(title):
+    return title.replace(" ", "-").lower()
