@@ -135,3 +135,13 @@ title: The Lazy Lizard --> the-lazy-lizard.md or the-lazy-lizard.board.md
 ### Feature: handle whitespace and capitals in doc titles 
 
 or have the title and another properties that matches the file name
+
+### Descriptions in Board view
+
+it would be nice if there was a way to have descriptions in the board view. Maybe something like this. 
+
+- [some task](.md)::"some task description"
+
+## Changing Doc names
+
+The issue is that if a doc name changes in either the doc or the board there is no way to know which doc has been changed because their is no tracker or mapper. No look up. We might need to have a little sqlite db to handle this. 
