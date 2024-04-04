@@ -1,5 +1,5 @@
 import frontmatter
-import html2text
+from markdownify import markdownify as md
 import markdown
 
 # take path to markdown file and return frontmatter
@@ -13,10 +13,9 @@ def get_frontmatter(path):
 # take in raw html and return markdown
 # TODO: validate
 def html_to_md(html):
-    h = html2text.HTML2Text()
-    h.ul_item_mark = '-'
-    markdown = h.handle(html)
-    return markdown
+    
+    # h.ul_item_mark = '-'
+    return md(html, heading_style="ATX", bullets="-")
     
 
 # take in markdown path and get the html content
