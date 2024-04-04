@@ -1,2 +1,0 @@
-- [ ] add syntax highlighting to the cli promps
-- [ ] review linter and prettier settings
