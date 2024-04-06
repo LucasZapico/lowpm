@@ -41,4 +41,5 @@ def check_and_create_project_dir():
         os.makedirs(project_dir)
         print(f"Created project directory: {project_dir}")
     else:
-        print(f"Project directory already exists: {project_dir}")
+        logger.warning(f"Project directory already exists: {project_dir}")
+
