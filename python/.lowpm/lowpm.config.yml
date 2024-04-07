@@ -19,11 +19,14 @@ project_dir:  'foo-project' # "."
 ##
 frontmatter:
   base:
-    title: "foo"
+    title: "new"
     description: ""
     date_created: '04/02/2024'
     last_modified: '2024/03/31'
   page: 
     status: "backlog" # backlog, todo, doing, done, archive 
+    title: "new page"
   list: 
+    title: "new list"
   board:
+    title: "new board"
