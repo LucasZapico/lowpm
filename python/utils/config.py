@@ -16,13 +16,17 @@ project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 default_config = {"config_path": os.path.join(app_root, "/.lowpm/lowpm.config.yml")}
 
 
-
 def load_config():
+    # if not app_config==None: 
+    #     return config
+    
     # check if config can be found on user root
     if check_user_root_for_lowpm():
+        # set app_config to the user root
         app_config = os.path.join(os.path.expanduser("~"), ".lowpm", "lowpm.config.yml")
     # check if config can be found in the current directory 
     elif check_for_lowpm():
+        # set app_config to current directory (project root)
         app_config = os.path.join(os.getcwd(), ".lowpm", "lowpm.config.yml")
     else:
         app_config = os.path.join(app_root, '.lowpm', 'lowpm.config.yml')
