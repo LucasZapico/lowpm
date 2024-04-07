@@ -3,15 +3,19 @@ import os
 import sys
 import yaml
 from utils.config import load_config, check_and_create_project_dir
-from templates import create_new_board, create_new_list, create_new_page
-from app import initialize
+from app import initialize, config
 from utils.colorized_util import console
+# TODO: review, maybe consolidate the handlers into one file
+from handlers.init_handler import handle_init
+from handlers.cli_args import handle_new
+
+
 
 def main():
     # preloading and initializing the app
     initialize()
     # Load the config file
-    config = load_config()    
+    
 
     if not config:
         print("Exiting...")
@@ -24,6 +28,12 @@ def main():
     # hello command
     hello_parser = subparsers.add_parser(
         "hello", help="A little greeting from Lowpm CLI"
+    )
+
+    # init command
+    init_parser = subparsers.add_parser("init", help="Init lowpm in current directory")
+    init_parser.add_argument(
+        "--global", "-g",   action="store_true",  help="Init lowpm globally in user's home directory"
     )
 
     new_parser = subparsers.add_parser("new", help="New project")
@@ -40,26 +50,12 @@ def main():
         print(
             "Welcome to Lowpm, a filesystem first project management tool...yes another one. Use lowpm --help to see the available commands"
         )
+    elif args.command == "init": 
+      # handler for "init" command
+      handle_init(args)
     elif args.command == "new":
-        # Check the type argument
-        if args.type not in ["board", "page", "list", None]:
-            print(
-                f"Invalid type: {args.type}. Type must be 'board', 'page', 'list', or None."
-            )
-            return
-
-        config = {"template": args.template, "path": args.path, "name": args.name}
-
-        # Check if the type is board, list, or page
-        if args.type == "board":
-            create_new_board({**config, **{"type": "board"}})
-        elif args.type == "list":
-            create_new_list({**config, **{"type": "list"}})
-        elif args.type == "page":
-            create_new_page({**config, "type": "page"})
-        else:
-            # default to new page with new.md
-            create_new_page({**config, "type": "page"})
+      # handler for "new" command
+      handle_new(args)
 
     else:
         console.print(f"[cyan bold]lowpm[/cyan bold] doesn recongize the command: {args.command}\n[bold]Common commands:[/bold]\n[cyan]lowpm init[/cyan]: inits a lowpm in current dir allowing project specific config\n[cyan]lowpm new ---type page | board | list[/cyan]: create a new doc from template\n[cyan]lowpm --help[/cyan]: to see the available commands")
