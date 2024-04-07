@@ -1,26 +1,17 @@
 ---
-date_created: 04/02/2024
+title: new board
 description: ''
-last_modified: 2024/04/04
-title: foo
+date_created: 04/02/2024
+last_modified: 2024/03/31
 type: board
 ---
 
-## backlog
+## backlog 
 
+## todo 
 
-## todo
+## doing 
 
-
-- [foo](.md)
-
-
-## doing
-
-
-## done
-
+## done 
 
 ## archive
-
-

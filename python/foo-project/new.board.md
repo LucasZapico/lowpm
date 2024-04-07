@@ -1,5 +1,5 @@
 ---
-title: foo
+title: new board
 description: ''
 date_created: 04/02/2024
 last_modified: 2024/03/31
