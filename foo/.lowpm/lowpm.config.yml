@@ -1,0 +1,24 @@
+board_columns:
+- backlog
+- todo
+- doing
+- done
+- archive
+dir: .lowpm
+frontmatter:
+  base:
+    date_created: 04/02/2024
+    description: ''
+    last_modified: '2024/04/07'
+    title: new
+  board:
+    title: new board
+  list:
+    title: new list
+  page:
+    status: backlog
+    title: new page
+global_config_path: ~/.lowpm
+project_config_path: ./lowpm.config.yml
+project_dir: .
+timestamp_format: mm/dd/yyyy
