@@ -13,6 +13,7 @@ beautifulsoup4 = "*"
 html2text = "*"
 html2markdown = "*"
 markdownify = "*"
+rich = "*"
 
 [dev-packages]
 flake8 = "*"
