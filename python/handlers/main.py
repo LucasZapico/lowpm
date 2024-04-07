@@ -1,4 +1,3 @@
-import frontmatter
 import markdown
 import os
 from bs4 import BeautifulSoup
@@ -13,8 +12,8 @@ from utils.config import load_config
 from utils.doc_utils import update_doc, make_doc
 from utils.misc import format_doc_file_name
 from handlers.page import page_change_handler
+from app import config
 
-config = load_config()
 project_dir = os.path.abspath(config["project_dir"])
 board_columns = config["board_columns"]
 
