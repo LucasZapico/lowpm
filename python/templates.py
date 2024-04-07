@@ -95,15 +95,16 @@ def create_new_page(page_config=None):
         if lowpm_config["frontmatter"]["page"]
         else None
     )
+
     # add doc type to frontmatter
     frontmatter_with_type = update_frontmatter(base_frontmatter, "type", "page")
-    
-    
-
 
     if page_frontmatter:
         frontmatter_with_type.update(page_frontmatter)
     frontmatter = frontmatter_with_type    
+    # update frontmatter name 
+    if page_config["name"]:
+        frontmatter = update_frontmatter(frontmatter, "title", page_config["name"])
 
     lowpm_dir = lowpm_config["dir"]
     project_dir = lowpm_config["project_dir"]
@@ -139,7 +140,7 @@ def create_new_page(page_config=None):
 
     # Create the new file
     new_file_path = os.path.join(pg_config["path"], pg_config["name"])
-
+    console.print(f"new page path: {new_file_path}")
     if os.path.exists(new_file_path):
       console.print(f'[bold  dark_orange3 ]WARNING:[/bold dark_orange3] The file [bold]{new_file_path}[/bold] already exists')
     else:

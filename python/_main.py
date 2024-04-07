@@ -8,10 +8,11 @@ from utils.colorized_util import console
 # TODO: review, maybe consolidate the handlers into one file
 from handlers.init_handler import handle_init
 from handlers.cli_args import handle_new
-
+from watchers import watch_directory
 
 
 def main():
+    
     # preloading and initializing the app
     initialize()
     # Load the config file
@@ -30,6 +31,9 @@ def main():
         "hello", help="A little greeting from Lowpm CLI"
     )
 
+    # temp: handling watch
+    wath_parser = subparsers.add_parser("watch", help="Watch a directory for changes")
+
     # init command
     init_parser = subparsers.add_parser("init", help="Init lowpm in current directory")
     init_parser.add_argument(
@@ -47,9 +51,11 @@ def main():
     # Now you can access the values with args.new, args.template, args.name, args.path
     # Add your logic here
     if args.command == "hello":
-        print(
-            "Welcome to Lowpm, a filesystem first project management tool...yes another one. Use lowpm --help to see the available commands"
+        console.print(
+            "Welcome to Lowpm, a filesystem first project management tool...yes another one.\nUse [cyan]lowpm --help[/cyan] to see the available commands"
         )
+    elif args.command == "watch":
+        watch_directory(config["project_dir"])
     elif args.command == "init": 
       # handler for "init" command
       handle_init(args)

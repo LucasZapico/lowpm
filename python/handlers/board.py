@@ -2,16 +2,18 @@ import os
 from bs4 import BeautifulSoup
 
 from utils.misc import find_file_in_dir, format_doc_file_name
-from utils.config import load_config
+from app import config
 from utils.utils_markdown import html_to_md
 from utils.doc_utils import update_doc, make_doc
-
+from utils.colorized_util import console
 # comon
-config = load_config()
 project_dir = os.path.abspath(config["project_dir"])
 board_columns = config["board_columns"]
 
 def get_boards_paths(frontmatter):
+    if "boards" not in frontmatter:
+        console.print("[bold dark_orange3]WARNING:[/bold dark_orange3] The page is missing the required 'boards' key in the frontmatter")
+        return None
     # get board file names from frontmatter            
     board_file_names = [f"{board}.board.md" for board in frontmatter["boards"]]
 

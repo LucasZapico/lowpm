@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import os
 
-from utils.config import load_config
+from app import config
 from utils.utils_markdown import get_frontmatter, html_to_md, md_to_html
 from utils.logger import logger
 from utils.doc_utils import update_doc, make_doc
@@ -10,7 +10,7 @@ from handlers.board import get_boards_paths
 from handlers.board import update_board_columns, get_boards_paths
 
 # comon
-config = load_config()
+
 project_dir = os.path.abspath(config["project_dir"])
 board_columns = config["board_columns"]
 

@@ -52,6 +52,10 @@ def init_local_lowpm():
     with open(default_config, 'r') as file:
       default_config_yml = yaml.safe_load(file)
     
+    # TODO: handle this better, this has todo with how we are handling project paths in our config
+    if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+      default_config_yml["project_dir"] = "." # current_dir
+    else: 
       default_config_yml["project_dir"] = current_dir
     
     # Write the updated data back to the file
