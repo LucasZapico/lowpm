@@ -1,5 +1,5 @@
 from rich.console import Console
-
+from rich.text import Text
 console = Console()
 
 def print_error(message: str, *err):
@@ -17,3 +17,5 @@ def print_warning(message: str, *args):
 def print_success(message: str, *args):
     tag = Text("SUCCESS:", style="bold green")
     console.print(tag, message, *args)
+
+    
