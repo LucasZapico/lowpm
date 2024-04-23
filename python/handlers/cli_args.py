@@ -1,4 +1,4 @@
-from templates import create_new_board, create_new_list, create_new_page
+from templates import create_new_doc
 
 def handle_new(args):
     # Check the type argument
@@ -12,11 +12,11 @@ def handle_new(args):
 
     # Check if the type is board, list, or page
     if args.type == "board":
-        create_new_board({**config, **{"type": "board"}})
+        create_new_doc({**config, **{"type": "board"}})
     elif args.type == "list":
-        create_new_list({**config, **{"type": "list"}})
+        create_new_doc({**config, **{"type": "list"}})
     elif args.type == "page":
-        create_new_page({**config, "type": "page"})
+        create_new_doc({**config, "type": "page"})
     else:
         # default to new page with new.md
-        create_new_page({**config, "type": "page"})
+        create_new_doc({**config, "type": "page"})
