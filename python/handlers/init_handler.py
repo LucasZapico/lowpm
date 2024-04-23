@@ -3,9 +3,10 @@ import shutil
 import yaml
 import sys
 
-from utils.colorized_util import console
+from utils.colorized_cli_utils import console, print_error, print_info, print_warning, print_success
 from helpers.init_helpers import check_for_lowpm, check_user_root_for_lowpm
 from utils.config import app_root
+from utils.logger import logger
 
 def handle_init(args):
     if getattr(args, 'global', False):
@@ -17,6 +18,10 @@ def handle_init(args):
         # Initialize lowpm in the current directory
         if not check_for_lowpm():
           init_local_lowpm()
+        else: 
+          mgs = ".lowpm directory already exists in the current directory."
+          logger.warn(mgs)
+          print_warning(mgs)
 
 
         
@@ -32,7 +37,7 @@ def init_global(default):
     # Copy the source directory to the destination directory
     shutil.copytree(source_dir, dest_dir)
 
-    console.print(f"Copied .lowpm directory to the user's home directory: {dest_dir}")
+    print_info(f"Copied .lowpm directory to the user's home directory: {dest_dir}")
 
 def init_local_lowpm():
     # Define the source directory
