@@ -1,7 +1,10 @@
 from templates import create_new_doc
+from utils.colorized_cli_utils import print_info
 
 def handle_new(args):
     # Check the type argument
+    print_info(f"Creating new document: {args.path}")
+    
     if args.type not in ["board", "page", "list", None]:
         print(
             f"Invalid type: {args.type}. Type must be 'board', 'page', 'list', or None."
