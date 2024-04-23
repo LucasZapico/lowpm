@@ -26,7 +26,10 @@ frontmatter:
   page: 
     status: "backlog" # backlog, todo, doing, done, archive 
     title: "new page"
+    type: "page"
   list: 
     title: "new list"
+    type: "list"
   board:
     title: "new board"
+    type: "board"
