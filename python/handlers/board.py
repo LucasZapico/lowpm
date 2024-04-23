@@ -5,7 +5,7 @@ from utils.misc import find_file_in_dir, format_doc_file_name
 from app import config
 from utils.utils_markdown import html_to_md
 from utils.doc_utils import update_doc, make_doc
-from utils.colorized_util import console
+from utils.colorized_cli_utils import console
 # comon
 project_dir = os.path.abspath(config["project_dir"])
 board_columns = config["board_columns"]

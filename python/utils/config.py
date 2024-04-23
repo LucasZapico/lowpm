@@ -2,7 +2,7 @@ import os
 import yaml
 import sys
 from utils.logger import logger
-from utils.colorized_util import console
+from utils.colorized_cli_utils import console
 from helpers.init_helpers import check_for_lowpm, check_user_root_for_lowpm
 
 # IMPORTANT

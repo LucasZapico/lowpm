@@ -2,7 +2,7 @@ import logging
 import os
 import sys
 from rich.logging import RichHandler
-from utils.colorized_util import console
+from utils.colorized_cli_utils import console
 
 # Check if the directory exists
 if not os.path.exists("logs"):
