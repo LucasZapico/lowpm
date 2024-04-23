@@ -3,7 +3,7 @@ import os
 import yaml
 from utils.config import load_config, project_root
 from collections import OrderedDict
-from utils.colorized_util import console
+from utils.colorized_cli_utils import console, print_info, print_success, print_warning
 from app import config
 
 def update_frontmatter(frontmatter, key, value):
@@ -25,8 +25,15 @@ def create_new_doc(doc_config=None):
     lowpm_config = config
     project_dir = lowpm_config["project_dir"]
     doc_type = doc_config["type"]
+    
+    
+
+
     # get the full doc path
-    doc_path = os.path.join(os.getcwd(), doc_config["name"])
+    # TODO: review the logic of adding document type extension here
+    doc_relative_path = f"{doc_config["path"]}.md"
+    doc_absolute_path = os.path.normpath(os.path.join(os.getcwd(), doc_relative_path))
+    doc_path = doc_absolute_path
     # get file name of doc
     doc_file_name = os.path.basename(doc_path)
 
@@ -60,7 +67,7 @@ def create_new_doc(doc_config=None):
     final_config = {
         "template": doc_config["template"] or template_path,
         "name": doc_file_name,
-        "path": doc_config["path"] or project_dir,
+        "path": doc_path or project_dir,
         "frontmatter": frontmatter,
     }
 
@@ -86,12 +93,17 @@ def create_new_doc(doc_config=None):
     #     os.makedirs(doc_path)
 
     # Create the new file
-    doc_path = os.path.join(final_config["path"], final_config["name"])
+    # doc_path = os.path.join(final_config["path"], final_config["name"])
+    doc_path = os.path.join(final_config["path"])
+
+    # Create directories if they don't exist
+    os.makedirs(os.path.dirname(doc_path), exist_ok=True)
 
     if os.path.exists(doc_path):
-      console.print(f'[bold  dark_orange3 ]WARNING:[/bold dark_orange3] The file [bold]{doc_path}[/bold] already exists')
+      print_warning(f'The file [bold]{doc_path}[/bold] already exists')
     else:
       with open(doc_path, 'w') as file:
         file.write(merged_content)
+        print_success(f"Created new {doc_type} doc: {doc_relative_path}")
 
 
