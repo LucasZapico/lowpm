@@ -84,6 +84,12 @@ ok starting the watch functionality. Setting up a dir watcher was very easy. Tha
 
 I'm thinking, start with page changes...or board changes...idk.
 
+## Watching for "- TODO: some task" in other files 
+
+One think I have wanted for a while is some sort of watcher that agragates my little inline TODO: 
+
+A feature in the project config might be to watch for these and update them when changed. like if "TODO: some task" is moved in a board from "todo" to "inprogress" the task in line is updated with "INPROGRESS: some task" 
+
 ### Stories 
 
 A user adds a page to a board. The board column should update with the page backlink as a list item and be added to the column that matches status. 
@@ -145,3 +151,58 @@ it would be nice if there was a way to have descriptions in the board view. Mayb
 ## Changing Doc names
 
 The issue is that if a doc name changes in either the doc or the board there is no way to know which doc has been changed because their is no tracker or mapper. No look up. We might need to have a little sqlite db to handle this. 
+
+
+## Using Lowpm with Silver Sunset/Elder Home Finder - 2024/04/09
+
+I have been using lowpm to try and manage the project(s) with Elder Home Finder and the first thing I ran into is that I need to nest my sub project in their own dir. I found that keeping it flat got overwhelming quickly.
+
+```txt
+project
+      ├─ .lowpm
+      │  ├─ lowpm.config.yml
+      │  └─ templates
+      │     ├─ template-frontmatter.yml
+      │     ├─ template.board.md
+      │     └─ template.page.md
+      ├─ TODO.md
+      ├─ api
+      │  ├─ api.board.md
+      │  └─ api.md
+      ├─ auth
+      │  ├─ auth.board.md
+      │  ├─ auth.md
+      │  └─ user.md
+      └─ top.board.md
+```
+
+### Feat: Allow a path to be passed in the `new`
+
+```sh
+lowpm new --type board --name api --path api
+# project/api/api.board.md
+```
+
+### Feat: Handle Orphan doc in a more graceful way
+
+In the project above I have a few docs that I don't have associated with a board and the watch behavior throws and error when `boards` property is not found
+
+### Feat: list?
+
+When I was stubbing out the tasks for user auth I ended up writing something like this;
+
+```md
+- auth 
+  - user
+    - register
+      - backend
+      - frontend
+    - login 
+      - backend
+      - frontend
+    - delete
+      - backend
+      - frontend
+```
+
+I would like to handle this better... how does this map to boards, list, tables etc.
