@@ -1,7 +1,6 @@
 import argparse
 import os
 import sys
-import yaml
 from utils.config import load_config, check_and_create_project_dir
 from app import initialize, config
 from utils.colorized_cli_utils import console
@@ -32,6 +31,13 @@ def main():
     hello_parser = subparsers.add_parser(
         "hello", help="A little greeting from Lowpm CLI"
     )
+
+    ##
+    ## "check" command
+    check_parser = subparsers.add_parser(
+        "check", help="sanity check the project"
+    )
+
 
     # temp: handling watch
     wath_parser = subparsers.add_parser("watch", help="Watch a directory for changes")
@@ -78,6 +84,12 @@ def main():
         print(
             "Welcome to Lowpm, a filesystem first project management tool...yes another one.\nUse [cyan]lowpm --help[/cyan] to see the available commands"
         )
+    elif args.command == "check":
+        print("Checking the project")
+        check = {
+            project_dir: os.path.join(config["project_dir"]),
+            project_name: config["project_config_path"],
+        }
     elif args.command == "watch":
         watch_directory(config["project_dir"])
     elif args.command == "init":

@@ -1,7 +1,7 @@
 import shutil
 import os
 import yaml
-from utils.config import load_config, project_root
+from utils.config import load_config, project_root, app_root
 from collections import OrderedDict
 from utils.colorized_cli_utils import console, print_info, print_success, print_warning
 from app import config
@@ -56,9 +56,11 @@ def create_new_doc(doc_config=None):
     frontmatter = doc_frontmatter
     
     # Define the path to the template
-    template_path = os.path.join(
-        project_root, lowpm_dir, "templates", f"template.{doc_type}.md"
-    )
+    # TODO: review the logic to handle custom templates at the project level
+    # project_root path was having issues with pyinstaller and needs discovery
+    template_path = resource_path(os.path.join(
+        app_root, lowpm_dir, "templates", f"template.{doc_type}.md"
+    ))
 
     # create doc name by type 
     doc_file_name = create_file_name(doc_type, doc_config["name"])
@@ -107,3 +109,12 @@ def create_new_doc(doc_config=None):
         print_success(f"Created new {doc_type} doc: {doc_relative_path}")
 
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
