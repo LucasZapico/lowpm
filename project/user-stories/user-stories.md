@@ -90,3 +90,12 @@ title: my-amazing-project --> [my-amazing-project](.md)
 ### hanlde nested project structures 
 
 As a user I want to be able to leverage lowpm config from any level of a project. I should be able to create docs and dirs where ever I am. 
+
+### when In list view I want a way to related tasks
+
+
+I was writing some task down in list view and I had some child task or sibiing tasks 
+
+
+
+
