@@ -24,7 +24,7 @@ def md_to_html(path):
     """function to convert markdown to html"""
     if path.endswith(".md"):
 
-        with open(path, "r") as file:
+        with open(path, "r", encoding="utf8") as file:
             doc = frontmatter.load(file)
             html_content = markdown.markdown(doc.content)
             return html_content
