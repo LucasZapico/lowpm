@@ -1,0 +1,6 @@
+frontmatter:
+  title: "foo"
+  description: ""
+  date_created: '04/02/2024'
+  last_modified: '2024/04/01'
+  status: "" # backlog, todo, doing, done, archive 
