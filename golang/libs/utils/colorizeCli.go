@@ -6,6 +6,8 @@ import (
 	"github.com/fatih/color"
 )
 
+
+
 func PrintError(message string, err ...error) {
 	color.Set(color.FgRed)
 	red := color.New(color.FgRed)
