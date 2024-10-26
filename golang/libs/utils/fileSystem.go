@@ -51,6 +51,7 @@ func CopyRecursive(source, destination string) error {
 		}
 
 		des, err := CopyFile(path, filepath.Join(destination, filepath.Base(path)))
+		PrintInfo(des)
 		// Copy the file.
 		if err != nil {
 			return errors.New("failed to copy file: " + err.Error())
