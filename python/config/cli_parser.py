@@ -40,16 +40,16 @@ cli_args = [
     },
 ]
 
-NO_ARGS_FOUND = "[cyan bold]lowpm[/cyan bold] doesn recongize the command: {args.command}\n[bold]Common commands:[/bold]\n[cyan]lowpm init[/cyan]: inits a lowpm in current dir allowing project specific config\n[cyan]lowpm new ---type page | board | list[/cyan]: create a new doc from template\n[cyan]lowpm --help[/cyan]: to see the available commands"
+NO_ARGS_FOUND = """[cyan bold]lowpm[/cyan bold] doesn't recognize the command: {args.command}\n[bold]Common commands:[/bold]\n[cyan]lowpm init[/cyan]: inits a lowpm in current dir allowing project specific config\n[cyan]lowpm new ---type page | board | list[/cyan]: create a new doc from template\n[cyan]lowpm --help[/cyan]: to see the available commands"""
 
 
 def cmd_parser(args: str) -> str:
     """parse commands from cli"""
+
     for arg in cli_args:
         if args.command == arg["command"]:
             return arg["response"]
-
-    return "[cyan bold]lowpm[/cyan bold] doesn recongize the command: {args.command}\n[bold]Common commands:[/bold]\n[cyan]lowpm init[/cyan]: inits a lowpm in current dir allowing project specific config\n[cyan]lowpm new ---type page | board | list[/cyan]: create a new doc from template\n[cyan]lowpm --help[/cyan]: to see the available commands"
+    return NO_ARGS_FOUND
 
 
 def init_parser():
