@@ -1,9 +1,9 @@
 import pytest
 from utils.utils_markdown import md_to_html, get_frontmatter, html_to_md
 from utils.colorized_cli_utils import print_info
-from helpers.init_helpers import current_dir
+from utils.config import project_root
 
-test_doc_path = f"{current_dir}/test/test_utils_markdown_test.md"
+test_doc_path = f"{project_root}/test/test_utils_markdown_test.md"
 
 
 ## take path to markdown file and return frontmatter
